@@ -1,0 +1,7 @@
+.nav{
+    display: flex;
+    justify-content: flex-end !important;
+}
+.navbar-custom { 
+    background-color: midnightblue; 
+} 

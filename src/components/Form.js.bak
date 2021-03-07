@@ -1,0 +1,82 @@
+import React from 'react'
+import {v4 as uuid} from 'uuid'
+import { Formik, Form as Formk ,Field, ErrorMessage } from 'formik'
+import { Multiselect } from 'multiselect-react-dropdown';
+import * as yup from 'yup'
+
+// Formik  Props
+const initialValues = {
+    exercise: '',
+    reps: '',
+    intervals: []
+}
+
+const validationSchema = yup.object({
+    exercise: yup.string().required('Required'),
+    reps: yup.number().required("Required"),
+    intervals: yup.array().required("Required")
+})
+
+const Form = ({events, setEvents, options}) => {
+
+    const onSubmit = (values) => {
+        console.log('Form data', values)
+        setEvents([...events,{ 
+            exercise: values.exercise,
+            reps: values.reps,
+            intervals: values.reps,
+            id: uuid()}
+        ]);
+    } 
+
+
+    return (
+        <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
+        >
+            <Formk className="form-fields">
+                New Activity
+                <div className="form-control">
+                    <label className="form-label" htmlFor="Exercise">Exercise</label>
+                    <Field type='text' as="select" id='exercise' name='exercise' placeholder="select">
+                        <option value={exercise} disabled hidden>Please Choose</option>
+                        {options.map((option, index) => {
+                            return <option value={option}>{option}</option>
+                        })}
+                        
+                        {/* <option value="Sit-ups">Sit-ups</option>
+                        <option value="Pull-ups">Pull-ups</option>
+                        <option value="Squats">Squats</option> */}
+                    </Field>
+                    <ErrorMessage name="exercise" render={msg => <div className="error-msg">{msg}</div>} />
+                </div>
+
+                <div className="form-control">
+                    <label className="form-label" htmlFor="reps">Reps</label>
+                    <Field type='number' id='reps' name='reps' />
+                    <ErrorMessage name="reps" render={msg => <div className="error-msg">{msg}</div>} />
+                </div>
+
+                <div className="form-control">
+                    <label className="form-label" htmlFor="Intervals">Intervals</label>
+                    <Field type='text' as="select" id='interval' name='interval' placeholder="select">
+                        <option value="" disabled selected hidden>Please Choose</option>
+                        <option value="Push-ups">Push-ups</option>
+                        <option value="Sit-ups">Sit-ups</option>
+                        <option value="Pull-ups">Pull-ups</option>
+                        <option value="Squats">Squats</option>
+                    </Field>
+                    <ErrorMessage name="exercise" render={msg => <div className="error-msg">{msg}</div>} />
+                </div>
+
+                <button className="todo-button" type="submit">
+                    <i className="fas fa-plus-square"></i>
+                </button>
+            </Formk>
+        </Formik>
+    );
+}
+
+export default Form

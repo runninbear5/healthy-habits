@@ -1,0 +1,25 @@
+:root{
+    --black: #231b1dff;
+    --yellow: #fcff4bff;
+    --white: #f3f6f6ff;
+    --cyan: #adf5ffff;
+}
+
+.home{ 
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.title{
+    font-size: 200px;
+    color: var(--yellow);
+}
+
+.login-btn{
+    font-size: 80px;
+    font-weight: 500;
+    background-color: var(--white);
+    color: var(--cyan);
+    text-decoration: none;
+}
