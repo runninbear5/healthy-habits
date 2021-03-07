@@ -1,5 +1,4 @@
 import React, {useContext, useState} from 'react'
-import { UserContext} from '../provider/UserProvider'
 import '../css/nav.css';
 
 const Navbar = ({user}) => {
@@ -26,9 +25,20 @@ const Navbar = ({user}) => {
                     <li className="p-2 nav-item">
                     <a className="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
-                    <li className="p-2 nav-item">
-                    <a className="nav-link" href="/dashboard">Dashboard</a>
-                    </li>
+                    {user ?
+                        <li className="p-2 nav-item">
+                        <a className="nav-link" href="/doWorkout">Do Workout</a>
+                        </li>
+                    :
+                        <div></div>
+                    }
+                    {user ?
+                        <li className="p-2 nav-item">
+                        <a className="nav-link" href="/dashboard">Dashboard</a>
+                        </li>
+                    :
+                        <div></div>
+                    }
                 </ul>
                 <ul className="d-flex nav navbar-nav ml-auto">
                         {user ?

@@ -23,21 +23,40 @@ var user = null;
 export const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider()
 
-export const signInWithGoogle = () => {
+export const signInWithGoogle = (setUser) => {
   auth.signInWithPopup(googleProvider).then((res) => {
-    // console.log(res.user)
-    return res.user;
+    const { displayName, email, uid } = res.user;
+    let user = {
+      displayName, email, uid
+    }
+    console.log(user);
+    localStorage.setItem("user", JSON.stringify(user))
+    setUser("logged in");
   }).catch((error) => {
     console.log(error.message)
   })
 }
 
-export const getUser = user;
+export const getUser = () => {
+  auth.onAuthStateChanged(async userData => {
+    const { displayName, email, uid } = userData;
+    let user = {
+      displayName, email, uid
+    }
+    console.log(user);
+    return user;
+  })
+  // if(auth.currentUser){
+    
+  // }else{
+  //   return null;
+  // }
+}
 
-export const logOut = () => {
-  console.log("attempung log out");
+export const logOut = (setuser) => {
   auth.signOut().then(()=> {
-    console.log('logged out')
+    localStorage.setItem("user", null)
+    setuser("not logged in");
     user = null;
   }).catch((error) => {
     console.log(error.message)
@@ -47,16 +66,21 @@ export const logOut = () => {
 export const writeUserData = (data) => {
   var defaultDatabase = firebase.database();
   let ref = defaultDatabase.ref("/")
-  let newWorkout = ref.child("workouts").push();
+  let newWorkout = ref.child(`workouts/${data.user}`).push();
   newWorkout.set(data)
   console.log(data);
 }
 
-export const getUserData = () => {
-  let ref = firebase.database().ref("/");
-  ref.on("value", snapshot => {
-    const state = snapshot.val();
-    this.setState(state);
-  });
+export const getUserData = (user, callback) => {
+  var defaultDatabase = firebase.database();
+  let ref = defaultDatabase.ref("/");
+  let workouts = ref.child(`workouts/${user.uid}`);
+  workouts.on('value', (snapshot) => {
+    callback(snapshot.val());
+  })
+  // ref.on("value", snapshot => {
+  //   const state = snapshot.val();
+  //   this.setState(state);
+  // });
 };
 

@@ -8,7 +8,6 @@ import useInterval from '@use-it/interval';
 import Chart from './Chart';
 import "../css/ExerciseTracker.css";
 import sound from "../assets/sound.mp3"
-import { UserContext} from '../provider/UserProvider'
 import {writeUserData} from '../database/firebase'
 
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
@@ -18,8 +17,7 @@ let stateCount = 0;
 let audio = new Audio(sound);
 
 
-function ExcerciseTracker({options}) {
-  const user = useContext(UserContext);
+function ExcerciseTracker({options, user}) {
   const videoRef = useRef();
   const [start, setStart] = useState(false);
   const [result, setResult] = useState([]);
@@ -60,7 +58,6 @@ function ExcerciseTracker({options}) {
         return;
       }
       setResult(results);
-
       callback(results[0].label)
     });
   }
@@ -145,17 +142,20 @@ function ExcerciseTracker({options}) {
           visible={!loaded}
           style={{display:'flex', justifyContent:'center', marginTop:'30px' }}/>   
         {start ? 
-        <div className="dropdown">
-          { togo <= 0 ? <h2 className="goal"> Nice Job! Count: {count} {selected} </h2> : <h2 className="goal"> To go: {togo} {selected} </h2>}
-        </div>
-        : 
-        <div className="dropdown">
-          <h2 className="goal"> Goal: </h2>
-          <input className="reps" type="number" defaultValue={togo} onChange={handleRepsChange}></input>
-          <Dropdown options={options} onChange={_onSelect} value={selected} placeholder="Select an option" />
-        </div>
-      }   
+          <div className="dropdown">
+            { togo <= 0 ? <h2 className="goal"> Nice Job! Count: {count} {selected} </h2> : <h2 className="goal"> To go: {togo} {selected} </h2>}
+            
+          </div>
+          : 
+          <div className="dropdown">
+            <h2 className="goal"> Goal: </h2>
+            <input className="reps" type="number" defaultValue={togo} onChange={handleRepsChange}></input>
+            <Dropdown options={options} onChange={_onSelect} value={selected} placeholder="Select an option" />
+          </div>
+          
+        }   
       <div className="upper">
+        
         <div className="capture">
           <video
             ref={videoRef}
@@ -168,12 +168,14 @@ function ExcerciseTracker({options}) {
               {start ? "Stop" : "Start"}
             </button>
           )}
+          {result.length > 0 && start ? 
+              <div><br /><h2>{result[0].label} with {result[0].confidence.toFixed(2)*100}% Confidence</h2></div> : <div></div>}
         </div>
-        {result.length > 0 && (
+        {/* {result.length > 0 && (
           <div>
             <Chart data={result[0]} />
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
