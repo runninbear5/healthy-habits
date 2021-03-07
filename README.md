@@ -15,4 +15,8 @@ We used Firebase Authentication and Realtime Database to allow users to create p
 
 Using Google's Teachable Machine, we created ML models for various workouts, then using the ml5 library we used image classification to track the number of repititions a user has completed of each exercise.
 
+## Production Build
+Here is the link to the production build:
+https://healthyhabits-hack.netlify.app/
+
 
