@@ -1,16 +1,15 @@
 :root{
-    --raisin-black: #231b1dff;
-    --maximum-yellow: #fcff4bff;
-    --cultured: #f3f6f6ff;
-    --celeste: #adf5ffff;
+    --black: rgb(22, 25, 26);
+    --yellow: rgb(207, 255, 75);
+    --white: #f3f6f6ff;
+    --cyan: #adf5ffff;
 }
-
 body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: var(--raisin-black);
-    color: var(--cultured);
+    background-color: var(--black);
+    color: var(--cyan);
 }
 
 .container {
@@ -37,17 +36,17 @@ body {
 .capture button {
     width: 150px;
     height: 41px;
-    background-color: var(--celeste);
-    border: 1px solid var(--cultured);
+    background-color: var(--yellow);
+    border: 1px solid var(--cyan);
     border-radius: 4px;
-    color: var(--raisin-black);
+    color: var(--black);
     font-weight: 900;
     cursor: pointer;
     outline: none;
 }
 
 .capture button:hover {
-    background-color: #ca0fcaa6;
+    background-color: var(--cyan);
 }
 
 .results {
@@ -73,19 +72,6 @@ body {
 
 .results .princes li {
     padding: 15px 0px 0px 15px;
-}
-
-.results .princes .img {
-    border-radius: 50%;
-    width: 100px;
-    height: 90px;
-    padding: 5px;
-}
-
-.results .princes .name {
-    margin: 0;
-    padding: 0;
-    text-align: center;
 }
 
 .dropdown {

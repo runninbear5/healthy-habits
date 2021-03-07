@@ -1,12 +1,23 @@
 import React, {useContext, useState} from 'react'
+import { Dropdown } from 'react-bootstrap'
+import { Link, Redirect } from 'react-router-dom';
 import '../css/nav.css';
 
-const Navbar = ({user}) => {
+const Navbar = ({user, setUser}) => {
     // const user = useContext(UserContext)
+    var imageUrl = "";
+    if(user){
+        imageUrl = user.photoUrl;
+    }
+
+    function logoutClick() {
+        <Redirect to="/logout"/>
+    }
+
     const [redirect, setRedirect] = useState(null)
     console.log(user);
     return(
-        <nav className="navbar navbar-expand-lg navbar-light navbar-custom ">
+        <nav className="navbar navbar-expand-lg navbar-dark navbar-custom ">
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">Healthy Habits </a>
                 <button
@@ -22,18 +33,18 @@ const Navbar = ({user}) => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="d-flex navbar-nav mr-auto">
-                    <li className="p-2 nav-item">
-                    <a className="nav-link active" aria-current="page" href="/">Home</a>
+                    <li className="p-2 nav-item active-custom">
+                    <a className="nav-link" aria-current="page" href="/">Home</a>
                     </li>
                     {user ?
-                        <li className="p-2 nav-item">
+                        <li className="p-2 nav-item active-custom">
                         <a className="nav-link" href="/doWorkout">Do Workout</a>
                         </li>
                     :
                         <div></div>
                     }
                     {user ?
-                        <li className="p-2 nav-item">
+                        <li className="p-2 nav-item active-custom">
                         <a className="nav-link" href="/dashboard">Dashboard</a>
                         </li>
                     :
@@ -42,15 +53,21 @@ const Navbar = ({user}) => {
                 </ul>
                 <ul className="d-flex nav navbar-nav ml-auto">
                         {user ?
-                            <li className="ms-auto nav-item">
-                                <span className="navbar-text">Welcome Back {user.displayName}</span>
+                            <li className="ms-auto nav-item nav-custom-flex">
+                                <Dropdown>
+                                    <Dropdown.Toggle as="a" className="navbar-text logout-drop">
+                                        <span className="navbar-text">Welcome Back, {user.displayName}</span>
+                                        <img className="propic" src={user.photoURL}/>
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item href="/logout">Logout</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
                             </li>
                         : 
                             <div></div>}
                         {user ? 
-                            <li className="nav-item">
-                                    <a className="nav-link" href="/logout">Logout</a>
-                            </li>
+                            <></>
                         :
                             <li className="ms-auto p-2 nav-item">
                                 <a className="nav-link" href="/login">Login</a>

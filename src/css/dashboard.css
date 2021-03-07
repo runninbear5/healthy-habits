@@ -1,0 +1,8 @@
+.no-workouts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--yellow);
+    margin-top: 20px;
+    font-size: 50px;
+}

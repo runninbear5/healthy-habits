@@ -12,6 +12,7 @@
     "formik": "^2.2.6",
     "ml5": "^0.6.1",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.5.1",
     "react-dom": "^17.0.1",
     "react-dropdown": "^1.9.2",
     "react-gauge-chart": "^0.3.0",

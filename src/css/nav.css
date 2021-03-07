@@ -1,7 +1,66 @@
+:root{
+    --black: rgb(22, 25, 26);
+    --yellow: rgb(207, 255, 75);
+    --white: #f3f6f6ff;
+    --cyan: #adf5ffff;
+    --transition: all 0.3s linear;
+    --spacing: 0.2rem;
+}
+
+
 .nav{
     display: flex;
     justify-content: flex-end !important;
 }
 .navbar-custom { 
-    background-color: midnightblue; 
+    background-color: var(--black); 
+    color: var(--white);
+} 
+
+.active-custom a {
+    text-transform: capitalize;
+    color: var(--black);
+    font-weight: bold;
+    letter-spacing: var(--spacing);
+    transition: var(--transition);
+    padding: 0.5rem 0;
+    font-weight: 300;
+  }
+
+  .active-custom a:hover {
+    color: var(--yellow);
+    box-shadow: 0px 2px var(--yellow);
+  }
+
+.active-custom a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;  
+      left: 0;
+      width: 100%;
+      height: .2rem;
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+      transform-origin: bottom right;
+      background-color: var(--yellow);
+  }
+
+  .active-custom a:hover::after {
+      transform-origin: bottom left;
+      transform: scaleX(1);
+  }
+
+  .propic {
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+  }
+
+.logout-drop{
+    font-size: 1rem;
+}
+
+.nav-custom-flex{
+    display: flex !important;
+    flex-direction: row !important;
 } 

@@ -2,6 +2,7 @@ import React, { useState, useEffect, setState } from "react";
 import { Link } from "react-router-dom";
 import { getUserData } from "../database/firebase";
 import "../css/home.css";
+import "../css/dashboard.css";
 
 function Dashboard({ user }) {
   const [redirect, setredirect] = useState(null);
@@ -49,7 +50,7 @@ function Dashboard({ user }) {
           </tbody>
         </table>
       ) : (
-        <p>No Workouts</p>
+        <p className="no-workouts">You have not completed any workouts</p>
       )}
     </div>
   );

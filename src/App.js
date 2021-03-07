@@ -22,7 +22,7 @@ function App() {
 
   return (
     <Router>
-      <Navbar user={userTmp}></Navbar>
+      <Navbar user={userTmp} setUser={setUser}></Navbar>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={() => <SignInPage user={user} setUser={setUser}/>} />

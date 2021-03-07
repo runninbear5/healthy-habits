@@ -25,9 +25,9 @@ const googleProvider = new firebase.auth.GoogleAuthProvider()
 
 export const signInWithGoogle = (setUser) => {
   auth.signInWithPopup(googleProvider).then((res) => {
-    const { displayName, email, uid } = res.user;
+    const { displayName, email, uid, photoURL } = res.user;
     let user = {
-      displayName, email, uid
+      displayName, email, uid, photoURL
     }
     console.log(user);
     localStorage.setItem("user", JSON.stringify(user))
@@ -39,9 +39,9 @@ export const signInWithGoogle = (setUser) => {
 
 export const getUser = () => {
   auth.onAuthStateChanged(async userData => {
-    const { displayName, email, uid } = userData;
+    const { displayName, email, uid, photoURL } = userData;
     let user = {
-      displayName, email, uid
+      displayName, email, uid, photoURL
     }
     console.log(user);
     return user;
@@ -83,4 +83,3 @@ export const getUserData = (user, callback) => {
   //   this.setState(state);
   // });
 };
-

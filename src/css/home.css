@@ -1,6 +1,6 @@
 :root{
-    --black: #231b1dff;
-    --yellow: #fcff4bff;
+    --black: rgb(22, 25, 26);
+    --yellow: rgb(207, 255, 75);
     --white: #f3f6f6ff;
     --cyan: #adf5ffff;
 }
