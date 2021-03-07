@@ -1,30 +1,25 @@
-import React, { useState, useEffect, setState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { getUserData } from "../database/firebase";
 import "../css/home.css";
 import "../css/dashboard.css";
 
 function Dashboard({ user }) {
-  const [redirect, setredirect] = useState(null);
   const [data, setData] = useState(null);
   const [pulled, setPulled] = useState(false);
   useEffect(() => {
     if (!pulled) {
       getUserData(user, (retrivedData) => {
-        console.log(retrivedData);
         if (retrivedData) {
           setData(retrivedData);
           setPulled(true);
         }
       });
     }
-  }, []);
+  }, [pulled, user]);
 
   function dateToString(date) {
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
   }
-
-  console.log(data);
 
   return (
     <div>

@@ -37,7 +37,7 @@ body {
     width: 150px;
     height: 41px;
     background-color: var(--yellow);
-    border: 1px solid var(--cyan);
+    border: 1px solid var(--yellow);
     border-radius: 4px;
     color: var(--black);
     font-weight: 900;
@@ -46,32 +46,12 @@ body {
 }
 
 .capture button:hover {
-    background-color: var(--cyan);
+    background-color: var(--black);
+    color: var(--yellow);
 }
 
 .results {
     margin-top: 40px;
-}
-.results .selected {
-    border: 2px solid gold;
-    animation: moveIt 5s infinite;
-}
-
-@keyframes moveIt {
-    25% {border: 4px solid rgb(240, 202, 36);}
-    50% {border: 4px solid rgb(211, 177, 24);}
-    100% {border: 4px solid rgb(179, 150, 24);}
-}
-
-.results .princes {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-
-.results .princes li {
-    padding: 15px 0px 0px 15px;
 }
 
 .dropdown {
@@ -86,6 +66,7 @@ body {
 .goal{
     margin: 0;
     font-size: 2.5rem;
+    color: var(--yellow)
 }
 
 .reps{

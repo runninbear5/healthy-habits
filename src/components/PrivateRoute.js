@@ -6,7 +6,7 @@
 import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
-const PrivateRoute = ({ component: Component, user: user, ...rest }) => {
+const PrivateRoute = ({ component: Component, user, ...rest }) => {
 
   // Add your own authentication on the below line.
   console.log(user);

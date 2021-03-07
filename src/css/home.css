@@ -23,3 +23,15 @@
     color: var(--cyan);
     text-decoration: none;
 }
+
+.fourDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fourText{
+    margin-top: 8rem;
+    color: var(--yellow);
+    font-size: 4rem;
+}

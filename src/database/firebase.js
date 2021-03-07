@@ -18,8 +18,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-var user = null;
-
 export const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider()
 
@@ -43,7 +41,6 @@ export const getUser = () => {
     let user = {
       displayName, email, uid, photoURL
     }
-    console.log(user);
     return user;
   })
   // if(auth.currentUser){
@@ -57,7 +54,6 @@ export const logOut = (setuser) => {
   auth.signOut().then(()=> {
     localStorage.setItem("user", null)
     setuser("not logged in");
-    user = null;
   }).catch((error) => {
     console.log(error.message)
   })

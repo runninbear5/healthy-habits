@@ -1,11 +1,10 @@
 // Import dependencies
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import * as ml5 from 'ml5';
 import Loader from 'react-loader-spinner';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import useInterval from '@use-it/interval';
-import Chart from './Chart';
 import "../css/ExerciseTracker.css";
 import sound from "../assets/sound.mp3"
 import {writeUserData} from '../database/firebase'
@@ -44,8 +43,7 @@ function ExcerciseTracker({options, user}) {
         classifiers[option] = ml5.imageClassifier(process.env.PUBLIC_URL+`/models/${option}/model.json`, modelLoaded);
       }
     })
-    // classifier = ml5.imageClassifier(process.env.PUBLIC_URL+"/models/model.json", modelLoaded);
-  }, []);
+  }, [options]);
 
   function modelLoaded(){
   }

@@ -1,21 +1,9 @@
-import React, {useContext, useState} from 'react'
+import React from 'react'
 import { Dropdown } from 'react-bootstrap'
-import { Link, Redirect } from 'react-router-dom';
 import '../css/nav.css';
 
 const Navbar = ({user, setUser}) => {
     // const user = useContext(UserContext)
-    var imageUrl = "";
-    if(user){
-        imageUrl = user.photoUrl;
-    }
-
-    function logoutClick() {
-        <Redirect to="/logout"/>
-    }
-
-    const [redirect, setRedirect] = useState(null)
-    console.log(user);
     return(
         <nav className="navbar navbar-expand-lg navbar-dark navbar-custom ">
             <div className="container-fluid">
@@ -57,7 +45,7 @@ const Navbar = ({user, setUser}) => {
                                 <Dropdown>
                                     <Dropdown.Toggle as="a" className="navbar-text logout-drop">
                                         <span className="navbar-text">Welcome Back, {user.displayName}</span>
-                                        <img className="propic" src={user.photoURL}/>
+                                        <img alt="user profile" className="propic" src={user.photoURL}/>
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
                                         <Dropdown.Item href="/logout">Logout</Dropdown.Item>

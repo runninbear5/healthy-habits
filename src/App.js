@@ -1,15 +1,12 @@
-import logo from './logo.svg';
-import React, {useEffect, useContext, useState} from 'react'
+import React, {useState} from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Home from './pages/home';
 import SignInPage, {Logout} from './pages/login';
 import WatchWorkout from './pages/watchWorkout';
 import Dashboard from './pages/Dashboard';
-import FormPage from './pages/FormPage'
 import NotFoundPage from './pages/404';
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute'
-import {getUser} from './database/firebase'
 import './App.css';
 
 function App() {
