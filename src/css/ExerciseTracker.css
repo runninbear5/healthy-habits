@@ -4,8 +4,11 @@
     --white: #f3f6f6ff;
     --cyan: #adf5ffff;
 }
-body {
+
+html,body {
     box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
     margin: 0;
     padding: 0;
     background-color: var(--black);

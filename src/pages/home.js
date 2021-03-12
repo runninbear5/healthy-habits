@@ -4,8 +4,8 @@ import '../css/home.css';
 function Home(){
 
     return(
-        <div>
-            <div className="home title">Healthy Habits</div>
+        <div className="home">
+            <h1  className="title">Healthy Habits</h1>
         </div>
     )
 }
