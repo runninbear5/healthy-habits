@@ -19,23 +19,14 @@ function Login({user, setUser}){
 
 export function Logout({setuser}){
     // const user = useContext(UserContext)
-    const [redirect, setredirect] = useState("/logout")
+    
 
     useEffect(() => {
         logOut(setuser);
     }, [setuser])
-    if (redirect) {
-        return <Redirect to={redirect}/>
-    }
-    return (
-        <div className="home-page">
-            <div className="logobox">
-            </div>
-            <div className="row">
-                Logging Out
-            </div>
-        </div>
-    );
+    
+    return <Redirect to="/"/>
+    
 }
 
 export default Login;

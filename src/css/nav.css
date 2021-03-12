@@ -64,3 +64,29 @@
     display: flex !important;
     flex-direction: row !important;
 } 
+
+.dropdown {
+  display: flex;
+  justify-content: center;
+  flex-basis: 2rem;
+  max-height: 2rem;
+  color: var(--black);
+  letter-spacing: 0.1rem;
+  transition: var(--transition);
+  padding: 0.5rem 0;
+  font-weight: 300;
+}
+
+
+.click-menu {
+  text-align: right;
+  transform: translate(0,.5rem);
+  left: 50%;
+  min-width: 3rem;
+}
+
+
+.center{
+  align-items: center !important;
+  justify-content: center !important;
+}
